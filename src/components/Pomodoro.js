@@ -78,6 +78,7 @@ function Pomodoro() {
     setMinute(24)
     setLimitInput(limit)
     setIsAdjust(!isAdjust)
+    setDisplay(1)
   }
 
   let AlertView=()=>{
