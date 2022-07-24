@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {Tabs,Tab,Box,Typography} from '@mui/material';
 import ListMaintain from './components/ListMaintain';
 import Pomodoro from './components/Pomodoro';
-import { makeStyles, Theme } from '@mui/core/styles';
+import { makeStyles } from '@mui/styles';
 import './App.css';
 
 function TabPanel(props) {
@@ -39,10 +39,10 @@ function a11yProps(index) {
   };
 }
 
-const useStyles = makeStyles((theme: Theme) => ({
+const useStyles = makeStyles(() => ({
   root: {
     flexGrow: 1,
-    backgroundColor: theme.palette.background.paper,
+    backgroundColor: "white",
   },
   tab: {
     background: 'white',
@@ -55,6 +55,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 export default function App() {
   const [value, setValue] = React.useState(0);
   const classes = useStyles();
+   const tabClasses = {root: classes.tab};
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -62,16 +63,16 @@ export default function App() {
     <div>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs inkBarStyle={{background: 'blue'}} centered TabIndicatorProps={{style: {background:'white',color:'white'}}} value={value} onChange={handleChange} aria-label="basic tabs example">
-          <Tab label="List Maintainance" {...a11yProps(0)} />
-          <Tab label="Pomodoro Clock" {...a11yProps(1)} />
-          <Tab label="Item Three" {...a11yProps(2)} />
+          <Tab classes={tabClasses} label="Pomodoro Clock" {...a11yProps(0)} />
+          <Tab classes={tabClasses} label="List Maintainance" {...a11yProps(1)} />
+          <Tab classes={tabClasses} label="Item Three" {...a11yProps(2)} />
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
-        <ListMaintain />
+        <Pomodoro />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <Pomodoro />
+        <ListMaintain />
       </TabPanel>
       <TabPanel value={value} index={2}>
         Item Three
