@@ -50,7 +50,7 @@ export default function ListMaintain() {
     }
     else if(input===3){
       setListName("Items combining both A and B (unique)")
-      
+      setLists([...new Set([...listA.concat(listB)])])
     }
     else{
 
