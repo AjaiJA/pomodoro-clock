@@ -1,11 +1,74 @@
-.App {
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap');
+*{
+  padding:0;
+  margin:0;
+  box-sizing:border-box;
+}
+body{
+  background:#15133C;
+}
+p{
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  line-height:30px;
+  font-size:20px;
+}
+.list-maintain-view{
+  padding-top:30px;
+}
+.list-input-div{
+}
+.timer-bar{
+  padding-top: 30px;
+  max-width: 310px;
+  margin: 0 auto;
   text-align: center;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.adjust-btn,.start-btn,.pause-btn,.apply-btn{
+  cursor:pointer;
+  padding:10px;
+  font-size:18px;
+  font-weight:bolder;
+  text-align:center;
+  color:white;
+  background:#646FD4;
+  font-family: 'Kanit', sans-serif;
+  border-radius:10px;
+  border:none;
 }
+.adjust-btn,.start-btn,.pause-btn{
+  width:30%;
+}
+.start-btn{
+  background:#0096FF;
+}
+.pause-btn{
+  background:#E02401;
+}
+.adjust-btn span,.start-btn span,.pause-btn span,.apply-btn span{
+  
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.adjust-btn svg,.start-btn svg,.pause-btn svg, .apply-btn svg{
+  width:20px;
+}
+.settings-view{
+  height:40vh;
+  background:white;
+  border-radius:10px;
+  width:80%;
+  margin:40px auto;
+}
+.form-apply{
+  line-height:80px;
+  text-align:center;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.form-body{
+  margin:auto 60px;
+}
+/*
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
@@ -22,11 +85,7 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
+} */
 
 @keyframes App-logo-spin {
   from {
