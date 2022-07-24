@@ -26,15 +26,12 @@ const Demo = styled('div')(({ theme }) => ({
 
 export default function ListMaintain() {
   const [dense, setDense] = useState(false);
-  const [input, setInput] = useState(0);
-  const listA=["Apple","Banana","Orange","Mango","Grapes","Beans"]
+  const [input, setInput] = useState(5);
+  const listA=["Apple","Banana","Orange","Mango","Grapes","Papaya","Beans"]
   const listB=["Tomato","Potato","Spinach","Cucumber","Beans","Chilli","Grapes"]
   const [lists,setLists]=useState([])
   const [listName,setListName]=useState("")
 
-  const handleChange = (event) => {
-    setInput(Number(event.target.value));
-  };
   let handleList=()=>{
     if(input===0){
       setListName("Items present only in A")
@@ -52,9 +49,7 @@ export default function ListMaintain() {
       setListName("Items combining both A and B (unique)")
       setLists([...new Set([...listA.concat(listB)])])
     }
-    else{
-
-    }
+    else{setInput(5)}
   }
   return (
     <div className="list-maintain-view">
@@ -62,17 +57,11 @@ export default function ListMaintain() {
         <div className="list-input-div">
           <FormControl sx={{ m: 1, minWidth: 120 }} fullWidth>
             <InputLabel id="demo-simple-select-helper-label">Operation</InputLabel>
-            <Select
-              required
-              labelId="demo-simple-select-helper-label"
-              id="demo-simple-select-helper"
-              value={input}
-              label="Select Operation"
-              onChange={handleChange}
+            <Select labelId="demo-simple-select-helper-label" id="demo-simple-select-helper" value={input} label="Select Operation" 
+              onChange={(event) => {
+                setInput(Number(event.target.value));
+              }}
             >
-              <MenuItem value="">
-                <em>None</em>
-              </MenuItem>
               <MenuItem value="0">Items present only in A</MenuItem>
               <MenuItem value="1">Items present only in B</MenuItem>
               <MenuItem value="2">Items present in both A and B</MenuItem>
@@ -95,41 +84,57 @@ export default function ListMaintain() {
         </div>
       </div>
       <Grid container spacing={2}>
-        <Grid item xs={12} md={6}>
+        {
+          input===5 ? '' :
+            <Grid item xs={12} md={4}>
+              <Typography style={{color:"white"}} sx={{ mt: 4, mb: 2 }} variant="h6" component="div">
+                {listName}
+              </Typography>
+              <Demo>
+                <List dense={dense}>
+                  {
+                    lists.map((list,index)=>(
+                      <ListItem key={index}>
+                        <ListItemText primary={list} />
+                      </ListItem>
+                    ))
+                  }
+                </List>
+              </Demo>
+            </Grid>
+        }
+        <Grid item xs={12} md={4}>
           <Typography style={{color:"white"}} sx={{ mt: 4, mb: 2 }} variant="h6" component="div">
-            {listName}
+            Items in List A
           </Typography>
           <Demo>
             <List dense={dense}>
               {
-                lists.map((list,index)=>(
+                listA.map((list,index)=>(
                   <ListItem key={index}>
-                    <ListItemText
-                      primary={list}
-                    />
+                    <ListItemText primary={list} />
                   </ListItem>
                 ))
               }
             </List>
           </Demo>
         </Grid>
-        {/* <Grid item xs={12} md={6}>
+        <Grid item xs={12} md={4}>
           <Typography style={{color:"white"}} sx={{ mt: 4, mb: 2 }} variant="h6" component="div">
-            List B
+            Items in List B
           </Typography>
           <Demo>
             <List dense={dense}>
-              {generate(
-                <ListItem>
-                  <ListItemText
-                    primary="Single-line item"
-                    secondary={secondary ? 'Secondary text' : null}
-                  />
-                </ListItem>,
-              )}
+              {
+                listB.map((list,index)=>(
+                  <ListItem key={index}>
+                    <ListItemText primary={list} />
+                  </ListItem>
+                ))
+              }
             </List>
           </Demo>
-        </Grid> */}
+        </Grid>
       </Grid>
     </div>
   )
