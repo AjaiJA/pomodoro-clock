@@ -61,10 +61,16 @@ export default function App() {
   return (
     <div>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-        <Tabs inkBarStyle={{background: 'blue'}} centered TabIndicatorProps={{style: {background:'white',color:'white'}}} value={value} onChange={handleChange} aria-label="basic tabs example">
+        <Tabs centered 
+          TabIndicatorProps={{style: {background:'#646FD4',height:5},}}
+          sx={{
+            "& button":{backgroundColor:"white"},
+            "& button:active":{backgroundColor:"#646FD4"},          
+          }}
+          value={value} onChange={handleChange} aria-label="basic tabs example"
+        >
           <Tab label="Pomodoro Clock" {...a11yProps(0)} />
           <Tab label="List Maintainance" {...a11yProps(1)} />
-          <Tab label="Item Three" {...a11yProps(2)} />
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
@@ -72,9 +78,6 @@ export default function App() {
       </TabPanel>
       <TabPanel value={value} index={1}>
         <ListMaintain />
-      </TabPanel>
-      <TabPanel value={value} index={2}>
-        Item Three
       </TabPanel>
     </div>
   )

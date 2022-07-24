@@ -68,6 +68,10 @@ p{
 .form-body{
   margin:auto 60px;
 }
+.form-body .list-input-div{
+  padding:30px;
+  background:white;
+}
 /*
 
 @media (prefers-reduced-motion: no-preference) {
