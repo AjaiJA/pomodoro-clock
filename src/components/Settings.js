@@ -1,7 +1,7 @@
 import React from 'react'
 import {Tooltip,TextField} from '@mui/material'
 
-export default function Settings({handleLimits,limitInput,setLimitInput}){
+export default function Settings({handleLimits,limit,setLimit}){
   return(
     <div className="settings-view">
       <h2 className="form-apply">Set the Cycle Length</h2>
@@ -18,7 +18,7 @@ export default function Settings({handleLimits,limitInput,setLimitInput}){
             inputProps={{
               min:1
             }}
-            value={limitInput} onChange={(e)=>setLimitInput(e.target.value)}
+            value={limit} onChange={(e)=>setLimit(Number(e.target.value))}
           />
         </div><br/>
         <center>

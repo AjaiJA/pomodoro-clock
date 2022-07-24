@@ -4,7 +4,7 @@ import Timer from './Timer';
 
 function Pomodoro() {
   const [limit,setLimit]=useState(0)
-  const [limitInput,setLimitInput]=useState(1)
+  const [limitInput,setLimitInput]=useState(3)
   const [minute,setMinute]=useState(24)
   const [second,setSecond]=useState(59)
   const [display,setDisplay]=useState(0)
@@ -74,9 +74,9 @@ function Pomodoro() {
   },[second,minute,time1,time2,limitInput,isBreak,display,percentage])
 
   let handleLimits=()=>{
-    setLimit(limitInput)
     setSecond(59)
-    setMinute(0)
+    setMinute(24)
+    setLimitInput(limit)
     setIsAdjust(!isAdjust)
   }
 
@@ -91,7 +91,7 @@ function Pomodoro() {
         <div style={{}}> 
           { 
           isAdjust ? 
-            <Settings handleLimits={handleLimits} limitInput={limitInput} setLimitInput={setLimitInput} /> 
+            <Settings handleLimits={handleLimits} limit={limit} setLimit={setLimit} /> 
             : 
             <Timer
               startTimer={startTimer} percentage={percentage} minute={minute} 
