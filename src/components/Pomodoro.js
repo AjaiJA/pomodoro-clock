@@ -5,7 +5,7 @@ import Timer from './Timer';
 function Pomodoro() {
   const [limit,setLimit]=useState(0)
   const [limitInput,setLimitInput]=useState(1)
-  const [minute,setMinute]=useState(1)
+  const [minute,setMinute]=useState(24)
   const [second,setSecond]=useState(59)
   const [display,setDisplay]=useState(0)
   const [mode, setMode] = useState('work'); 
@@ -14,7 +14,7 @@ function Pomodoro() {
   const [isRunning,setIsRunning]=useState(true)
   const [percentage,setPercentage]=useState(100)
   const isRunningRef=useRef(isRunning)
-  const [time1,setTime1]=useState("00:2:00")
+  const [time1,setTime1]=useState("00:25:00")
   const [time2,setTime2]=useState("00:0:00")
 
   let startTimer=()=>{
@@ -40,11 +40,11 @@ function Pomodoro() {
       }
       if(second===0){
         if(minute===0){
-          setMinute(!isBreak ? 1 : 1)
+          setMinute(!isBreak ? 4 : 24)
             
           if(!isBreak) {
             setMode("break")
-            setTime1("00:2:00")
+            setTime1("00:5:00")
             console.log("break : " + limitInput)
             setIsBreak(!isBreak)
           }
@@ -52,7 +52,7 @@ function Pomodoro() {
             setDisplay(display+1)
             setLimitInput(limitInput-1)
             setMode("work")
-            setTime1("00:2:00")
+            setTime1("00:25:00")
           }
           setSecond(59)
         }
