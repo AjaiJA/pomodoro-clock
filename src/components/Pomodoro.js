@@ -67,8 +67,8 @@ function Pomodoro() {
   },[second,minute,time1,time2,limitInput,isBreak,display])
 
   let handleLimits=()=>{
-    setSecond(5)
-    setMinute(0)
+    setSecond(59)
+    setMinute(24)
     setLimitInput(limit)
     setIsAdjust(!isAdjust)
     setDisplay(1)
